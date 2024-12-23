@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { nanoid } from '@reduxjs/toolkit'
 
 // Define a TS type for the data we'll be using
 export interface Post {
@@ -19,19 +20,32 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    postAdded(state, action: PayloadAction<Post>) {
-      // "Mutate" the existing state array, which is
-      // safe to do here because `createSlice` uses Immer inside.
-      state.push(action.payload)
+    postAdded: {
+      reducer(state, action: PayloadAction<Post>) {
+        state.push(action.payload)
+      },
+      prepare(title: string, content: string) {
+        return {
+          payload: { id: nanoid(), title, content }
+        }
+      }
     },
     postDelete(state, action: PayloadAction<string>) {
      return state.filter(post => post.id !== action.payload)
 // Filter method returns a new array
      
+    },
+    postUpdated(state, action: PayloadAction<Post>) {
+      const { id, title, content } = action.payload
+      const existingPost = state.find(post => post.id === id)
+      if (existingPost) {
+        existingPost.title = title
+        existingPost.content = content
+      }
     }
     
   }
 })
-export const { postAdded,postDelete } = postsSlice.actions
+export const { postAdded,postDelete ,postUpdated} = postsSlice.actions
 // Export the generated reducer function
 export default postsSlice.reducer

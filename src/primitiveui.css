@@ -20,7 +20,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
- html {
+html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -411,6 +411,7 @@ h5 {
   line-height: 1.2;
   color: #404040;
 }
+
 h1:not(:first-child),
 h2:not(:first-child),
 h3:not(:first-child),
@@ -446,23 +447,29 @@ h5 {
 }
 
 @media (min-width: 600px) {
+
   h1:not(:first-child),
   h2:not(:first-child),
   h3:not(:first-child) {
     margin-top: 2.5rem;
   }
+
   h1 {
     font-size: 2.25rem;
   }
+
   h2 {
     font-size: 2rem;
   }
+
   h3 {
     font-size: 1.75rem;
   }
+
   h4 {
     font-size: 1.5rem;
   }
+
   h5 {
     font-size: 1.25rem;
   }
@@ -472,6 +479,7 @@ a {
   color: #0366ee;
   text-decoration: none;
 }
+
 a:hover,
 a:active,
 a:focus {
@@ -490,6 +498,7 @@ blockquote {
   padding: 0 1.5rem;
   font-size: 1.5rem;
 }
+
 blockquote cite {
   display: block;
   margin-top: 1.5rem;
@@ -508,6 +517,7 @@ pre {
   font-size: 14px;
   margin: 0 0 1.5rem 0;
 }
+
 pre code {
   font-family: Menlo, monospace;
   line-height: 1.2;
@@ -528,7 +538,7 @@ kbd {
   text-shadow: 0 1px 0 #fff;
 }
 
-:not(pre) > code {
+:not(pre)>code {
   color: #404040;
   background: transparent;
   font-family: Menlo, monospace;
@@ -818,6 +828,7 @@ a.accent-button {
   border: 1px solid #29de7d;
   background: #29de7d;
 }
+
 .accent-button:hover,
 .accent-button:focus,
 .accent-button:active,
@@ -835,6 +846,7 @@ a.muted-button {
   border: 1px solid #cdcdcd;
   color: #4e4e4e;
 }
+
 .muted-button:hover,
 .muted-button:focus,
 .muted-button:active,
@@ -970,8 +982,7 @@ select {
   color: #404040;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAJCAYAAAA/33wPAAAAvklEQVQoFY2QMQqEMBBFv7ERa/EMXkGw11K8QbDXzuN4BHv7QO6ifUgj7v4UAdlVM8Uwf+b9YZJISnlqrfEUZVlinucnBGKaJgghbiHOyLyFKIoCbdvecpyReYvo/Ma2bajrGtbaC58kCdZ1RZ7nl/4/4d5EsO/7nzl7IUtodBexMMagaRrs+06JLMvcNWmaOv2W/C/TMAyD58dxROgSmvxFFMdxoOs6lliWBXEcuzokXRbRoJRyvqqqQvye+QDMDz1D6yuj9wAAAABJRU5ErkJggg==)
-    right center no-repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAJCAYAAAA/33wPAAAAvklEQVQoFY2QMQqEMBBFv7ERa/EMXkGw11K8QbDXzuN4BHv7QO6ifUgj7v4UAdlVM8Uwf+b9YZJISnlqrfEUZVlinucnBGKaJgghbiHOyLyFKIoCbdvecpyReYvo/Ma2bajrGtbaC58kCdZ1RZ7nl/4/4d5EsO/7nzl7IUtodBexMMagaRrs+06JLMvcNWmaOv2W/C/TMAyD58dxROgSmvxFFMdxoOs6lliWBXEcuzokXRbRoJRyvqqqQvye+QDMDz1D6yuj9wAAAABJRU5ErkJggg==) right center no-repeat;
   line-height: 1;
 }
 
@@ -1068,4 +1079,3 @@ caption {
     width: 100%;
   }
 }
-
