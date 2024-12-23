@@ -14,7 +14,7 @@ export const PostsList = () => {
   const dispatch = useAppDispatch();
 
   const posts: Post[] = useAppSelector((state: any) => state.posts || []);
-
+console.log(posts)
 
   const handleDelete = (postId: string) => {
     dispatch(postDelete(postId));

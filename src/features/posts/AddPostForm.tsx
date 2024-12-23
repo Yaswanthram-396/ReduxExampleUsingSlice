@@ -1,51 +1,57 @@
-import React from 'react'
-import { nanoid } from '@reduxjs/toolkit'
+import React from 'react';
+import { useAppDispatch } from '@/app/hooks';
+import { postAdded } from './postsSlice';
 
-import { useAppDispatch } from '@/app/hooks'
-
-import { type Post, postAdded } from './postsSlice'
-// TS types for the input fields
-// See: https://epicreact.dev/how-to-type-a-react-form-on-submit-handler/
+// TypeScript types for the form fields and elements
 interface AddPostFormFields extends HTMLFormControlsCollection {
-  postTitle: HTMLInputElement
-  postContent: HTMLTextAreaElement
+  postTitle: HTMLInputElement;
+  postContent: HTMLTextAreaElement;
 }
+
 interface AddPostFormElements extends HTMLFormElement {
-  readonly elements: AddPostFormFields
+  readonly elements: AddPostFormFields;
 }
 
 export const AddPostForm = () => {
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e: React.FormEvent<AddPostFormElements>) => {
-    // Prevent server submission
-    e.preventDefault()
+    e.preventDefault(); // Prevent default form submission
 
-    const { elements } = e.currentTarget
-    const title = elements.postTitle.value
-    const content = elements.postContent.value
-  
-    dispatch(postAdded(title, content))
-    console.log('Values: ', { title, content })
+    const { elements } = e.currentTarget;
+    const title = elements.postTitle.value.trim();
+    const content = elements.postContent.value.trim();
 
-    e.currentTarget.reset()
-  }
+    if (title && content) {
+      dispatch(postAdded(title, content)); // Dispatch action to add post
+      console.log('Post Added:', { title, content });
+      e.currentTarget.reset(); // Reset the form after submission
+    } else {
+      console.log('Both title and content are required.');
+    }
+  };
 
   return (
     <section>
       <h2>Add a New Post</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="postTitle">Post Title:</label>
-        <input type="text" id="postTitle" defaultValue="" required />
+        <input
+          type="text"
+          id="postTitle"
+          name="postTitle"
+          placeholder="Enter post title"
+          required
+        />
         <label htmlFor="postContent">Content:</label>
         <textarea
           id="postContent"
           name="postContent"
-          defaultValue=""
+          placeholder="Enter post content"
           required
         />
-        <button>Save Post</button>
+        <button type="submit">Save Post</button>
       </form>
     </section>
-  )
-}
+  );
+};
